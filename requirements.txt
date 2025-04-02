@@ -2,6 +2,6 @@ langchain-mcp-adapters
 langgraph
 python-dotenv
 streamlit
-langchain_google_genai
+langchain-google-genai
 pyngrok
 google-generativeai
