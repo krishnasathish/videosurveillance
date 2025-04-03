@@ -12,7 +12,7 @@ def validate_with_llm(query, retrieved_clips):
     Returns:
         str: The LLM's response, including opinions and analysis.
     """
-    genai.configure(api_key="AIzaSyA08nHF5FW5eG1ygGim_8fD0YYWVPFJU1A")
+    genai.configure(api_key="")
     llm = genai.GenerativeModel('models/gemini-2.0-flash')
     video_file_name = f"clips/{retrieved_clips[0]}"
     video_bytes = open(video_file_name, 'rb').read()
