@@ -9,7 +9,7 @@ The core of this system lies in its ability to understand and correlate both the
 ## Key Components and Approach
 
 1.  **Video Clip Processing and Multimodal Embedding Generation:**
-    * **Input:** The system takes a directory of video clips (e.g., MP4 files) as input.
+    * **Input:** The system takes a full video as input. Using OpenCV's VideoCapture, it finds fps and total number of frames. Based on the desired clip duration, it extracts the clips and creates a directory of video clips (e.g., MP4 files).
     * **Object Detection (YOLOv3):** Utilizes YOLOv3 to detect objects within video frames, extracting semantic information crucial for understanding the video's content.
     * **Keyframe Extraction:** Selects representative frames from each video to capture its visual essence, reducing computational load while preserving key information.
     * **CLIP Embeddings (Visual):** Employs CLIP (Contrastive Language-Image Pre-training) to generate high-dimensional embeddings from the extracted keyframes, capturing the visual semantics.
@@ -30,13 +30,14 @@ The core of this system lies in its ability to understand and correlate both the
     * **Result Retrieval:** Retrieves the filenames of the top-k matching video clips based on the FAISS search results.
 
 4.  **LLM-Powered Result Validation and Opinion Generation:**
-    * **LLM Integration (Ollama with Mistral):** Integrates a local LLM (Ollama with the Mistral model) to provide contextual analysis and opinions on the search results.
-    * **Prompt Engineering:** Employs a carefully designed prompt to instruct the LLM to:
-        * Rank the retrieved video clips by relevance to the user's query.
-        * Provide detailed explanations for any irrelevant clips.
-        * Summarize the content of relevant clips.
-        * Offer an overall opinion on the quality and relevance of the search results.
-    * **LLM Processing:** Passes the retrieved video filenames and the user's query to the LLM for processing.
+    * **LLM Integration (Ollama with Mistral):** Integrates with gemini-2.0-flash to provide contextual analysis and opinions on the search results.
+    * **Prompt Engineering:** Employs a carefully designed prompt to instruct the LLM to extract and present the insights in a structured format:
+        * Summary of Events
+        * Behavioral Patterns
+        * Alerts & Notifications**
+        * Identifications & Profiles
+        * Potential Threat Assessment
+    * **LLM Processing:** Passes the retrieved video clip and the user's query to the LLM for processing.
     * **Response Generation:** Generates a comprehensive response that includes the LLM's analysis, opinions, and summaries.
 
 5.  **Streamlit User Interface:**
