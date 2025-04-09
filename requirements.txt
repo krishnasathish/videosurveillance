@@ -1,0 +1,10 @@
+langchain-mcp-adapters
+langgraph
+python-dotenv
+streamlit
+langchain-google-genai
+pyngrok
+google-generativeai
+yt_dlp
+moviepy
+opencv-python
